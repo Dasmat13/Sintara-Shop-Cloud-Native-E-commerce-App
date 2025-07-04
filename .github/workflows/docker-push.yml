@@ -27,3 +27,8 @@ jobs:
       run: |
         docker build -t dasmat/product-service:latest ./product-service
         docker push dasmat/product-service:latest
+
+    - name: Build and Push API Gateway
+      run: |
+        docker build -t dasmat/api-gateway:latest ./api-gateway
+        docker push dasmat/api-gateway:latest
