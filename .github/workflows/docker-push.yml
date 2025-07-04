@@ -2,7 +2,7 @@ name: Docker CI/CD for dasmat
 
 on:
   push:
-    branches: [ main ]  # Change to "master" if needed
+    branches: [ main ]
 
 jobs:
   docker:
@@ -18,17 +18,17 @@ jobs:
     - name: Login to Docker Hub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "dasmat" --password-stdin
 
-    - name: Build and Push Frontend Image
+    - name: Build and Push Frontend
       run: |
         docker build -t dasmat/frontend:latest ./frontend
         docker push dasmat/frontend:latest
 
-    - name: Build and Push API Gateway Image
+    - name: Build and Push API Gateway
       run: |
         docker build -t dasmat/api-gateway:latest ./api-gateway
         docker push dasmat/api-gateway:latest
 
-    - name: Build and Push Product Service Image
+    - name: Build and Push Product Service
       run: |
         docker build -t dasmat/product-service:latest ./product-service
         docker push dasmat/product-service:latest
