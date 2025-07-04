@@ -1,59 +1,19 @@
-# Sintara-Shop-Cloud-Native-E-commerce-App
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sintara Shop - Cloud Native E-commerce App</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background: #f5f5f5;
-      color: #333;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #fff;
-      padding: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h1, h2, h3 {
-      color: #2c3e50;
-    }
-    code, pre {
-      background: #eee;
-      padding: 0.5em;
-      display: block;
-      margin: 1em 0;
-      overflow-x: auto;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1em 0;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 0.75em;
-      text-align: left;
-    }
-    th {
-      background: #f0f0f0;
-    }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <div class="container">
-    <h1>🛍️ Sintara Shop - Cloud Native E-commerce App</h1>
-    <p>A full-stack microservices-based e-commerce application built with Docker, Kubernetes, and CI/CD using GitHub Actions.</p>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <div class="max-w-5xl mx-auto p-6">
+    <h1 class="text-4xl font-bold mb-2">🛍️ Sintara Shop</h1>
+    <p class="text-lg mb-6">A full-stack microservices-based e-commerce application built with Docker, Kubernetes, and CI/CD using GitHub Actions.</p>
 
-    <h2>📐 Architecture Overview</h2>
-    <pre>
+    <h2 class="text-2xl font-semibold mb-2">📐 Architecture Overview</h2>
+    <div class="bg-white p-4 rounded shadow mb-6">
+      <pre class="whitespace-pre-wrap text-sm font-mono">
 +-----------------+
 |  Frontend (UI)  |
 | React / Express |
@@ -70,69 +30,82 @@
 +------+-----+  +--------+
 | Product API |  | MongoDB |
 +------------+  +--------+
-    </pre>
+      </pre>
+    </div>
 
-    <h2>🚀 Tech Stack</h2>
-    <ul>
-      <li>Frontend: Express.js</li>
-      <li>API Gateway: Node.js</li>
-      <li>Product Service: Python + Flask</li>
-      <li>Database: MongoDB</li>
-      <li>Containerization: Docker</li>
-      <li>Orchestration: Kubernetes (Minikube)</li>
-      <li>CI/CD: GitHub Actions</li>
+    <h2 class="text-2xl font-semibold mb-2">🚀 Tech Stack</h2>
+    <ul class="list-disc list-inside mb-6">
+      <li><strong>Frontend:</strong> Express.js</li>
+      <li><strong>API Gateway:</strong> Node.js</li>
+      <li><strong>Product Service:</strong> Python + Flask</li>
+      <li><strong>Database:</strong> MongoDB</li>
+      <li><strong>Containerization:</strong> Docker</li>
+      <li><strong>Orchestration:</strong> Kubernetes (Minikube)</li>
+      <li><strong>CI/CD:</strong> GitHub Actions</li>
     </ul>
 
-    <h2>🛠️ Setup Instructions</h2>
-    <h3>1. Prerequisites</h3>
-    <ul>
-      <li>Docker</li>
-      <li>Minikube</li>
-      <li>kubectl</li>
-      <li>Node.js ≥ 18</li>
-      <li>Python ≥ 3.9</li>
-    </ul>
-
-    <h3>2. Clone the Repository</h3>
-    <pre>git clone https://github.com/your-username/sintara-shop.git
-cd sintara-shop-cloud-native-e-commerce-app</pre>
-
-    <h3>3. Build Docker Images</h3>
-    <pre>
-docker build -t dasmat/frontend:latest ./frontend
+    <h2 class="text-2xl font-semibold mb-2">🛠️ Setup Instructions</h2>
+    <ol class="list-decimal list-inside mb-6">
+      <li>Install prerequisites: Docker, Minikube, kubectl, Node.js ≥ 18, Python ≥ 3.9</li>
+      <li>Clone the repo: <code class="bg-gray-100 px-1">git clone https://github.com/your-username/sintara-shop.git</code></li>
+      <li>Build Docker Images:
+        <pre class="bg-gray-100 p-2 text-sm mt-2">docker build -t dasmat/frontend:latest ./frontend
 docker build -t dasmat/api-gateway:latest ./api-gateway
 docker build -t dasmat/product-service:latest ./product-service
 
 docker push dasmat/frontend:latest
 docker push dasmat/api-gateway:latest
-docker push dasmat/product-service:latest
-    </pre>
+docker push dasmat/product-service:latest</pre>
+      </li>
+      <li>Deploy to Minikube:
+        <pre class="bg-gray-100 p-2 text-sm mt-2">minikube start
+kubectl apply -f k8s-manifests/</pre>
+      </li>
+    </ol>
 
-    <h3>4. Deploy to Minikube</h3>
-    <pre>
-minikube start
-kubectl apply -f k8s-manifests/
-    </pre>
-
-    <h2>🌐 Port Mappings</h2>
-    <table>
-      <tr><th>Service</th><th>Cluster Port</th><th>NodePort</th><th>Description</th></tr>
-      <tr><td>API Gateway</td><td>8080</td><td>30080</td><td>Handles all requests</td></tr>
-      <tr><td>Frontend</td><td>80</td><td>32037</td><td>Web UI</td></tr>
-      <tr><td>Product Service</td><td>5000</td><td>-</td><td>Backend API</td></tr>
-      <tr><td>MongoDB</td><td>27017</td><td>-</td><td>NoSQL Database</td></tr>
+    <h2 class="text-2xl font-semibold mb-2">🌐 Port Mappings</h2>
+    <table class="table-auto w-full mb-6 border border-collapse">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border px-4 py-2 text-left">Service</th>
+          <th class="border px-4 py-2">Cluster Port</th>
+          <th class="border px-4 py-2">NodePort</th>
+          <th class="border px-4 py-2">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-4 py-2">API Gateway</td>
+          <td class="border px-4 py-2">8080</td>
+          <td class="border px-4 py-2">30080</td>
+          <td class="border px-4 py-2">Handles all requests</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Frontend</td>
+          <td class="border px-4 py-2">80</td>
+          <td class="border px-4 py-2">32037</td>
+          <td class="border px-4 py-2">Web UI</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Product Service</td>
+          <td class="border px-4 py-2">5000</td>
+          <td class="border px-4 py-2">-</td>
+          <td class="border px-4 py-2">Backend API</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">MongoDB</td>
+          <td class="border px-4 py-2">27017</td>
+          <td class="border px-4 py-2">-</td>
+          <td class="border px-4 py-2">NoSQL Database</td>
+        </tr>
+      </tbody>
     </table>
-    <p>Access the app: <code>http://&lt;minikube-ip&gt;:32037</code></p>
+    <p>Access the app: <code class="bg-gray-100 px-1">http://&lt;minikube-ip&gt;:32037</code></p>
 
-    <h2>🔁 CI/CD with GitHub Actions</h2>
-    <p>On push to <code>main</code>, the following happens:</p>
-    <ul>
-      <li>Docker images are built</li>
-      <li>Images are pushed to Docker Hub</li>
-    </ul>
-
-    <h3>Sample Workflow</h3>
-    <pre>
+    <h2 class="text-2xl font-semibold mb-2">🔁 CI/CD with GitHub Actions</h2>
+    <p>On push to <code class="bg-gray-100 px-1">main</code>, Docker images are built and pushed to Docker Hub.</p>
+    <h3 class="text-lg font-semibold mt-4">Sample Workflow</h3>
+    <pre class="bg-gray-100 p-4 text-sm overflow-x-auto">
 name: Docker CI/CD for dasmat
 
 on:
@@ -150,7 +123,7 @@ jobs:
       uses: docker/setup-buildx-action@v2
 
     - name: Login to Docker Hub
-      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "dasmat" --password-stdin
+      run: echo "$" | docker login -u "dasmat" --password-stdin
 
     - name: Build and Push Frontend
       run: |
@@ -168,17 +141,17 @@ jobs:
         docker push dasmat/api-gateway:latest
     </pre>
 
-    <h2>📎 Useful Commands</h2>
-    <pre>
-minikube ip
-kubectl get pods
-kubectl get svc
-kubectl apply -f k8s-manifests/
-kubectl logs deployment/&lt;name&gt;
-    </pre>
+    <h2 class="text-2xl font-semibold mb-2">📎 Useful Commands</h2>
+    <ul class="list-disc list-inside mb-6">
+      <li><code>minikube ip</code></li>
+      <li><code>kubectl get pods</code></li>
+      <li><code>kubectl get svc</code></li>
+      <li><code>kubectl apply -f k8s-manifests/</code></li>
+      <li><code>kubectl logs deployment/&lt;name&gt;</code></li>
+    </ul>
 
-    <h2>📃 License</h2>
-    <p>MIT © Your Name</p>
+    <h2 class="text-2xl font-semibold mb-2">📃 License</h2>
+    <p class="mb-12">MIT © Dasmat</p>
   </div>
 </body>
 </html>
