@@ -1,23 +1,22 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: product-service
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: product-service
+      app: product
   template:
     metadata:
       labels:
-        app: product-service
+        app: product
     spec:
       containers:
-      - name: product-service
-        image: sintara/product-service
+      - name: product
+        image: dasmat/product-service:latest
         ports:
-        - containerPort: 5001
+        - containerPort: 5000
 ---
 apiVersion: v1
 kind: Service
@@ -25,9 +24,8 @@ metadata:
   name: product-service
 spec:
   selector:
-    app: product-service
+    app: product
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 5001
-  type: ClusterIP
+      port: 5000
+      targetPort: 5000
